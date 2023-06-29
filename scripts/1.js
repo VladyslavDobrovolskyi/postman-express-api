@@ -1,3 +1,6 @@
+const URI = `{{host}}/users/`
+const method = 'GET'
+
 const preRequestScripts = () => {
     const iteratedUser = pm.iterationData.get('USER')
     pm.environment.set('USER', JSON.stringify(iteratedUser))
