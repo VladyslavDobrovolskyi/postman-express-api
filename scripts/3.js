@@ -1,3 +1,6 @@
+const URI = `{{host}}/users/{{testUserId}}`
+const method = 'GET'
+
 const preRequestScripts = () => {
     if (!pm.environment.get('Testing')) {
         throw new Error('Пользователь не прошел регистрацию')
