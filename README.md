@@ -2,6 +2,13 @@
 ![Пробег n итераций](images/0.png)
 # **Порядок запросов в коллекции:**
 ## 1️⃣ **Проверка**, что тестовый пользователь не использует уже существующие в БД *email* или *номер телефона*:
+`pre-req:`
+```js
+const iteratedUser = pm.iterationData.get("USER")
+pm.environment.set("USER", JSON.stringify(iteratedUser));
+pm.environment.set(`Testing`, true);
+```
+
 `tests:`
 
 ```js
