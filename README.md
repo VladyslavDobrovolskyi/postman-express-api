@@ -1,6 +1,6 @@
 # 1. Проверка, что тестовый пользователь не использует уже зарегистрированные номер телефона или email адрес:
 
-> ![Alt text](1.png)
+> ![Alt text](images/1.png)
 
 _Pre-request Script:_
 
@@ -52,7 +52,7 @@ if (testUser.emailAddress) {
 
 # 2. Создание тестового пользователя:
 
-> ![Alt text](2.png)
+> ![Alt text](images/2.png)
 
 _Pre-request script:_
 
@@ -98,7 +98,7 @@ pm.test(`Создание пользователя ${JSON.stringify(createdUser)
 
 # 3. Поиск созданного пользователя по идентификатору
 
-> ![Alt text](3.png)
+> ![Alt text](images/3.png)
 
 _Pre-request:_
 
@@ -180,7 +180,7 @@ if (testUser.emailAddress) {
 }
 ```
 
-![Alt text](4.png)
-![Alt text](5.png)
-![Alt text](6.png)
-![Alt text](7.png)
+![Alt text](images/4.png)
+![Alt text](images/5.png)
+![Alt text](images/6.png)
+![Alt text](images/7.png)
