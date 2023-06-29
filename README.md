@@ -10,7 +10,7 @@ pm.environment.set('USER', JSON.stringify(iteratedUser))
 pm.environment.set(`Testing`, true)
 ```
 
-_Main script:_
+Main script:
 
 ```js
 const jsonData = pm.response.json()
@@ -180,7 +180,126 @@ if (testUser.emailAddress) {
 }
 ```
 
-![Alt text](images/4.png)
-![Alt text](images/5.png)
-![Alt text](images/6.png)
-![Alt text](images/7.png)
+# 4. Редактирование созданного пользователя:
+
+> ![Alt text](images/4.png)
+
+```js
+const updateData = {
+    firstName: 'Обновлен',
+    secondName: 'Обновленович',
+    phoneNumber: '+380000000000',
+    emailAddress: 'updated@mail.org',
+}
+
+pm.request.headers.add({
+    key: 'Content-Type',
+    value: 'application/json',
+})
+
+pm.request.body = {
+    mode: 'raw',
+    raw: updateData,
+}
+
+pm.environment.set(`USER`, JSON.stringify(updateData))
+```
+
+```js
+pm.test('Пользователь изменён', function () {
+    pm.response.to.have.status(200)
+})
+```
+
+# 5. Проверка, что изменения были внесены:
+
+> ![Alt text](images/5.png)
+
+```js
+const resUser = pm.response.json()
+const testUser = JSON.parse(pm.environment.get(`USER`))
+
+pm.test(`Проверка _id:${pm.environment.get('testUserId')}`, function () {
+    let idCheck = false
+
+    if (resUser._id === pm.environment.get('testUserId')) {
+        idCheck = true
+    }
+
+    pm.expect(
+        idCheck,
+        '{_id} пользователя, который был найден, не совпадает с данными обновлённого пользователя'
+    ).to.be.true
+})
+
+pm.test(`Проверка имени: ${testUser.firstName}`, function () {
+    let firstNameCheck = false
+
+    if (resUser.firstName === testUser.firstName) {
+        firstNameCheck = true
+    }
+
+    pm.expect(
+        firstNameCheck,
+        '{fisrtName} пользователя, который был найден, не совпадает с данными обновлённого пользователя'
+    ).to.be.true
+})
+pm.test(`Проверка фамилии: ${testUser.secondName}`, function () {
+    let secondNameCheck = false
+
+    if (resUser.secondName === testUser.secondName) {
+        secondNameCheck = true
+    }
+
+    pm.expect(
+        secondNameCheck,
+        '{secondName} пользователя, который был найден, не совпадает с данными обновлённого пользователя'
+    ).to.be.true
+})
+pm.test(`Проверка номера телефона: ${testUser.phoneNumber}`, function () {
+    let phoneNumberCheck = false
+
+    if (resUser.phoneNumber === testUser.phoneNumber) {
+        phoneNumberCheck = true
+    }
+
+    pm.expect(
+        phoneNumberCheck,
+        '{phoneNumber} пользователя, который был найден, не совпадает с данными обновлённого пользователя'
+    ).to.be.true
+})
+pm.test(`Проверка email: ${testUser.emailAddress}`, function () {
+    let emailAddressCheck = false
+
+    if (resUser.emailAddress === testUser.emailAddress) {
+        emailAddressCheck = true
+    }
+
+    pm.expect(
+        emailAddressCheck,
+        '{emailAddress} пользователя, который был найден, не совпадает с данными обновлённого пользователя'
+    ).to.be.true
+})
+```
+
+# 6. Удаление пользователя:
+
+> ![Alt text](images/6.png)
+
+```js
+pm.test(`Удаление пользователя`, function () {
+    pm.response.to.have.status(200)
+})
+```
+
+# 7. Проверка, что целевой пользователь был удален:
+
+> ![Alt text](images/7.png)
+
+```js
+const jsonData = pm.response.json()
+
+pm.test('Пользователь был успешно удалён', function () {
+    pm.response.to.have.status(404)
+})
+```
