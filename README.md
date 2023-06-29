@@ -215,7 +215,9 @@ pm.test('Пользователь изменён', function () {
 
 ## 5. Проверка, что изменения были внесены:
 
-![Alt text](images/5.png) > `tests:`
+![Alt text](images/5.png)
+
+`tests:`
 
 ```js
 const resUser = pm.response.json()
