@@ -1,0 +1,42 @@
+ [
+    {
+      "USER": {
+        "firstName": "Анна",
+        "secondName": "Иванова",
+        "phoneNumber": "+380731828194",
+        "emailAddress": "ivanova@mail.org"
+      }
+    },
+    {
+      "USER": {
+        "firstName": "Александр",
+        "secondName": "Попов",
+        "phoneNumber": "0777777777",
+        "emailAddress": "popov@mail.org"
+      }
+    },
+    {
+      "USER": {
+        "firstName": "Евгений",
+        "secondName": "Смирнов",
+        "phoneNumber": "+380888888888",
+        "emailAddress": "smirnov@mail.org"
+      }
+    },
+    {
+      "USER": {
+        "firstName": "Мария",
+        "secondName": "Кузнецова",
+        "phoneNumber": "+380999999999",
+        "emailAddress": "kuznetsova@mail.org"
+      }
+    },
+    {
+      "USER": {
+        "firstName": "мария",
+        "secondName": "Кузнецова",
+        "phoneNumber": "+38091299999",
+        "emailAddress": "kuznetsovaq@mail.org"
+      }
+    }
+  ]
