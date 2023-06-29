@@ -1,11 +1,7 @@
-# Тестирование моего [express-api](https://github.com/VladyslavDobrovolskyi/express-api) с помощью Postman (●'◡'●)
-
+# Тестирование моего [express-api](https://github.com/VladyslavDobrovolskyi/express-api) с помощью Postman
 ![Пробег n итераций](images/0.png)
-
-> В каждой новой итерации переменная USER принимает следующий объект из Users.json
-
-**Порядок запросов в коллекции:**
-
+# **Порядок запросов в коллекции:**
+## 1. Проверка, что тестовый пользователь не использует уже существующие в БД email или номер телефона:
 `tests:`
 
 ```js
