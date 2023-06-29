@@ -1,3 +1,6 @@
+const URI = `{{host}}/users/`
+const method = 'POST'
+
 const preRequestScripts = () => {
     if (pm.environment.get('Testing')) {
         let testUser = JSON.parse(pm.environment.get(`USER`))
