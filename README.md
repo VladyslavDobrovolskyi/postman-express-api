@@ -1,8 +1,8 @@
-# 1. Проверка, что тестовый пользователь не использует уже зарегистрированные номер телефона или email адрес:
+## 1. Проверка, что тестовый пользователь не использует уже зарегистрированные номер телефона или email адрес:
 
-> ![Alt text](images/1.png)
+![Alt text](images/1.png)
 
-_Pre-request Script:_
+`pre-req:`
 
 ```js
 const iteratedUser = pm.iterationData.get('USER')
@@ -10,7 +10,7 @@ pm.environment.set('USER', JSON.stringify(iteratedUser))
 pm.environment.set(`Testing`, true)
 ```
 
-Main script:
+`tests:`
 
 ```js
 const jsonData = pm.response.json()
@@ -50,11 +50,11 @@ if (testUser.emailAddress) {
 }
 ```
 
-# 2. Создание тестового пользователя:
+## 2. Создание тестового пользователя:
 
-> ![Alt text](images/2.png)
+![Alt text](images/2.png)
 
-_Pre-request script:_
+`pre-req:`
 
 ```js
 if (pm.environment.get('Testing')) {
@@ -81,7 +81,7 @@ if (pm.environment.get('Testing')) {
 }
 ```
 
-_Main script:_
+`tests:`
 
 ```js
 const createdUser = pm.response.json()
@@ -96,11 +96,11 @@ pm.test(`Создание пользователя ${JSON.stringify(createdUser)
 })
 ```
 
-# 3. Поиск созданного пользователя по идентификатору
+## 3. Поиск созданного пользователя по идентификатору
 
-> ![Alt text](images/3.png)
+![Alt text](images/3.png)
 
-_Pre-request:_
+`pre-req:`
 
 ```js
 if (!pm.environment.get('Testing')) {
@@ -108,7 +108,7 @@ if (!pm.environment.get('Testing')) {
 }
 ```
 
-_Tests:_
+`tests:`
 
 ```js
 const resUser = pm.response.json()
@@ -180,9 +180,9 @@ if (testUser.emailAddress) {
 }
 ```
 
-# 4. Редактирование созданного пользователя:
+## 4. Редактирование созданного пользователя:
 
-> ![Alt text](images/4.png)
+![Alt text](images/4.png) > `pre-req:`
 
 ```js
 const updateData = {
@@ -205,15 +205,17 @@ pm.request.body = {
 pm.environment.set(`USER`, JSON.stringify(updateData))
 ```
 
+`tests:`
+
 ```js
 pm.test('Пользователь изменён', function () {
     pm.response.to.have.status(200)
 })
 ```
 
-# 5. Проверка, что изменения были внесены:
+## 5. Проверка, что изменения были внесены:
 
-> ![Alt text](images/5.png)
+![Alt text](images/5.png) > `tests:`
 
 ```js
 const resUser = pm.response.json()
@@ -282,9 +284,11 @@ pm.test(`Проверка email: ${testUser.emailAddress}`, function () {
 })
 ```
 
-# 6. Удаление пользователя:
+## 6. Удаление пользователя:
 
-> ![Alt text](images/6.png)
+![Alt text](images/6.png)
+
+`tests:`
 
 ```js
 pm.test(`Удаление пользователя`, function () {
@@ -292,9 +296,11 @@ pm.test(`Удаление пользователя`, function () {
 })
 ```
 
-# 7. Проверка, что целевой пользователь был удален:
+## 7. Проверка, что целевой пользователь был удален:
 
-> ![Alt text](images/7.png)
+![Alt text](images/7.png)
+
+`tests:`
 
 ```js
 const jsonData = pm.response.json()
