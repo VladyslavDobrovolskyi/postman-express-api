@@ -181,7 +181,9 @@ if (testUser.emailAddress) {
 
 ## 4️⃣ Редактирование созданного пользователя:
 
-![Alt text](images/4.png) > `pre-req:`
+![Alt text](images/4.png) 
+
+`pre-req:`
 
 ```js
 const updateData = {
